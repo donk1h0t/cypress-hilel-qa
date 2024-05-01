@@ -2,36 +2,36 @@ import { BasePage } from "./BasePage"
 
 export class GaragePage extends BasePage{
 
-    addCarButton(){
-        return cy.xpath("//button[@class='btn btn-primary'][contains(text(), 'Add car')]")
+    static get addCarButton(){
+        return cy.get(`.panel-page_heading > .btn`, {timeout: 10000})
     }
     
-    selectCarOption(car){
-        return cy.xpath(`//select[@id="addCarBrand"]/child::option[contains(text(), '${car}')]`)
+    static get selectCarOption(){
+        return cy.get(`#addCarBrand`)
     }
 
-    selectCarModelOption(model){
-        return cy.xpath(`//select[@id="addCarModel"]/child::option[contains(text(), '${model}')])`)
+    static get selectCarModelOption(){
+        return cy.get(`#addCarModel`)
     }
 
-    milleageInput(){
-        return cy.xpath(`//input[@name='mileage']`)
+    static get milleageInput(){
+        return cy.get(`#addCarMileage`)
     }
 
     reportDate(){
         return cy.xpath(`//input[@name='reportedAt']`)
     }
 
-    addCarButton(){
-        return cy.get(`div[class = "modal-footer_group"] button[class = "btn btn-primary"]`)
+    static get addCarButtonInModal(){
+        return cy.get(`.modal-footer > .btn-primary`)
     }
 
     cancelCarAdding(){
         return cy.get(`button[class="btn btn-secondary"]`)
     }
 
-    removeCarButton(){
-        return cy.get(`button[class="btn btn-outline-danger"]`)
+    static get removeCarButtonLast(){
+        return cy.get(`.btn-danger`)
     }
 
     updateMilleageField(){
@@ -46,14 +46,30 @@ export class GaragePage extends BasePage{
         cy.contains('Milleage updated').should('exist')
     }
 
-    editCarButton(){
-        return cy.get(`button[class="car_edit btn btn-edit"]`)
+    static get editCarButton(){
+        return cy.get(`.car_edit > .icon`)
     }
 
-    removeCarButton(){
-        return cy.get(`button[class = "btn btn-danger"]`)
+    static get removeCarButton(){
+        return cy.get(`.btn-outline-danger`)
     }
 
+    static get carName(){
+        return cy.get(`.car_name`, {timeout: 1000}).first()
+    }
 
+    static get carList(){
+        return cy.get(`.car-list .car-item`, {timeout:1000})
+    }
+
+    exactCarInTheList(n){
+        return cy.get(`.car-list .car-item:nth-child(${n}) .car_edit`)
+    }
+
+    ExpenseAnyCarInTheList(n){
+        return cy.get(`.car-list .car-item:nth-child(${n}) .car_add-expense`)
+    }
 
 }
+
+export const garagePage = new GaragePage

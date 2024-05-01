@@ -3,11 +3,15 @@ import { BasePage } from "./BasePage";
 export class StartPage extends BasePage{
     
 signInButton(){
-    return cy.xpath('//button[@class="btn btn-outline-white header_signin"]');
+    return cy.get('.header_right > .btn');
     }
 
 signUpButton(){
     return cy.get('.hero-descriptor_btn.btn.btn-primary')
+}
+
+logInButton(){
+    return cy.get('.modal-footer > .btn-primary')
 }
 
 signUpName(){
@@ -22,8 +26,17 @@ signUpEmail(){
     return cy.get('input[name="email"]')
 }
 
+signInEmail(){
+    return cy.get('#signinEmail')
+}
+'#signinPassword'
+
 signUpPassword(){
     return  cy.get('input[name="password"]')
+}
+
+signInPassword(){
+    return  cy.get('#signinPassword')
 }
 
 signUpRepeatPassword(){
@@ -38,7 +51,7 @@ createAccount(user){
     this.signUpButton().click();
     this.signUpName().type(user.name);
     this.signUpLastName().type(user.lastName);
-    this.signUpEmail().type(user.email());
+    this.signUpEmail().type(user.email);
     this.signUpPassword().type(user.password);
     this.signUpRepeatPassword().type(user.password);
     this.signUpSubmitButton().click();
@@ -50,5 +63,8 @@ validateRegistration(user){
     this.profileDropDownClosed().click();
     this.profileTabDropDown().click();  
     cy.contains(user.name).should('exist');
+    this.kebabLogoutButton().click();
 }
 }
+
+export const startPage = new StartPage

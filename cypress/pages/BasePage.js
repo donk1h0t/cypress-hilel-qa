@@ -29,15 +29,15 @@ export class BasePage {
     }
 
     garageTabDropDown(){
-        return cy.xpath("//div[@class='user-nav show dropdown']/descendant::a[contains(text(), 'Garage')]");
+        return cy.get(`[routerlink="garage"]`);
     }
 
     fuelTabDropDown(){
-        return cy.xpath("//div[@class='user-nav show dropdown']/descendant::a[contains(text(), 'Fuel expenses')]");
+        return cy.get(`[routerlink="expenses"]`);
     }
 
     insctructionsTabDropDown(){
-        return cy.xpath("//div[@class='user-nav show dropdown']/descendant::a[contains(text(), 'Instructions')]");
+        return cy.get(`[routerlink="instructions"]`);
     }
 
     profileTabDropDown(){
@@ -77,3 +77,5 @@ export class BasePage {
     }
 
 }
+
+export const basePage = new BasePage

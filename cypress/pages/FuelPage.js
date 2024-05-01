@@ -4,7 +4,7 @@ import { GaragePage } from "./GaragePage";
 export class FuelPage extends BasePage{
 
     addExpenseButton(){
-        return cy.get(`div[class = "panel-page"] button[class = "btn btn-primary" ]`)
+        return cy.get(`.modal-footer > .btn-primary`)
     }
     
     emptyStateLink(){
@@ -12,27 +12,53 @@ export class FuelPage extends BasePage{
     }
 
     carDropDownButton(){
-        return cy.get(`#carSelectDropdown`)
+        return cy.get(`#addExpenseCar`)
     }
 
-    chooseCarFromDropDown(number){
-        return cy.get(`div[class = "car-select-dropdown show dropdown"] li:nth-child(${number})`)
+    datePicker(){
+        return cy.get(`#addExpenseDate`)
+    }
+
+    selectMonth(){
+        return cy.get(`[aria-label="Select month"]`)
+    }
+
+    selectYear(){
+        return cy.get(`[aria-label="Select year"]`)
+    }
+
+    selectDay(){
+        return cy.get(``)
     }
 
     numberOfLiters(){
-        return cy.xpath(`//input[@name='liters']`)
+        return cy.get(`#addExpenseLiters`)
+    }
+
+    milleageInput(){
+        return cy.get(`#addExpenseMileage`)
     }
 
     totalCost(){
-        return cy.xpath(`//input[@name='totalCost']`)
+        return cy.get(`#addExpenseTotalCost`)
     }
 
     deleteExpenceButton(){
         return cy.get(`button[class = "btn btn-delete"]`)
     }
 
+    removeExpenseButton(){
+        return cy.get(`.btn-danger`)
+    }
+    
     editExpenseButton(){
         return cy.get(`button[class = "btn btn-edit"]`)
     }
 
+    expensesTable(){
+        return cy.get(`.expenses_table`, {timeout: 1000})
+    }
+
 }
+
+export const fuelPage = new FuelPage
