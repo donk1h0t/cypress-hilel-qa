@@ -1,4 +1,3 @@
-import { garagePage } from "../pages/GaragePage";
 import { startPage } from "../pages/StartPage";
 import { generalStep } from "../steps/general-step";
 import { carsStep } from "../steps/cars-step";

@@ -1,5 +1,6 @@
 import { GeneralStep } from "./general-step";
 import { GaragePage, garagePage } from "../pages/GaragePage";
+import { RandGenerator } from "../helper/randgenerator";
 
 export class CarsStep extends GeneralStep{
 
@@ -43,7 +44,7 @@ export class CarsStep extends GeneralStep{
     chooseAnyCarFromGarage() {
         return GaragePage.carList.its('length').then(length => {
             let numberOfCars = length;
-            let n = Math.floor(Math.random() * length) + 1;
+            let n = RandGenerator.generateRandomNumber(length)
             return n;
         });
     }
