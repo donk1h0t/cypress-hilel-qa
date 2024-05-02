@@ -65,7 +65,6 @@ describe('Регистрация на странице и переход на с
     carsStep.checkThatCarDeleted(car2);
   });
 
-
   it('Додавання expense', () => {
     carsStep.addExpenseToAnyCar();
     fuelStep.addFuelExpence(car);

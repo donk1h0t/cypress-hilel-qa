@@ -5,7 +5,7 @@ export class Fuelstep extends GeneralStep{
 
     addFuelExpence(car){
         fuelPage.carDropDownButton().select(`${car.car} ${car.model}`);
-        fuelPage.datePicker().clear().type('1.05.2024');
+        fuelPage.datePicker().clear().type('2.05.2024');
         fuelPage.milleageInput().clear().type('120');
         fuelPage.numberOfLiters().type('5');
         fuelPage.totalCost().type('10');

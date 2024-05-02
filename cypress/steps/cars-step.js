@@ -28,24 +28,27 @@ export class CarsStep extends GeneralStep{
     }
 
     editAnyCarFromTheList(){
-        let numberOfCars;
-        GaragePage.carList.its('length').then(length => {
-            numberOfCars = length;
-            let n = Math.floor(Math.random() * (length)) + 1
-        garagePage.exactCarInTheList(n).click()
-    });
-    
-    }
+        this.chooseAnyCarFromGarage().then(n => {
+            garagePage.exactCarInTheList(n).click();
+        });
+        
+    };
 
     addExpenseToAnyCar(){
-        let numberOfCars;
-        GaragePage.carList.its('length').then(length => {
-            numberOfCars = length;
-            let n = Math.floor(Math.random() * (length)) + 1
-        garagePage.ExpenseAnyCarInTheList(n).click()
-    });
-    
+        this.chooseAnyCarFromGarage().then(n => {
+            garagePage.ExpenseAnyCarInTheList(n).click();
+        });
     }
+    
+    chooseAnyCarFromGarage() {
+        return GaragePage.carList.its('length').then(length => {
+            let numberOfCars = length;
+            let n = Math.floor(Math.random() * length) + 1;
+            return n;
+        });
+    }
+    
+    
 }
 export const carsStep = new CarsStep
 
