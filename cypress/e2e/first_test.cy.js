@@ -3,24 +3,13 @@ import { startPage } from "../pages/StartPage";
 import { generalStep } from "../steps/general-step";
 import { carsStep } from "../steps/cars-step";
 import { fuelStep } from "../steps/fuel-step";
-//import { UserData } from "../data/user_data";
+import { RandGenerator } from "../helper/randgenerator";
 
-
-function generateRandomNumber(){
-   return Math.floor(Math.random()*10000);
-}
-
-function mail(){
-  const randomNumber = generateRandomNumber()
-  return 'example' + randomNumber+ '@example.com'
-}
-
-var email = mail()
 
 let user = {
   name: 'Alex',
   lastName: 'Yevdokymov',
-  email: email,
+  email: RandGenerator.mail,
   password: 'Password123'
   };
 
